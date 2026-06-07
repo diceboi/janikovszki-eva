@@ -1,26 +1,111 @@
 @import "tailwindcss";
 
+/* ============================================
+   DESIGN SYSTEM — Az érem két oldala
+   ============================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ── Brand Colors ── */
+  --cream: #FFF8F0;
+  --white: #FFFFFF;
+  --ink: #2D2A26;
+  --coral: #FF6B6B;
+  --coral-hover: #E85555;
+  --sunshine: #FFD93D;
+  --sunshine-hover: #E6C235;
+  --sky: #6EC6FF;
+  --sky-hover: #56B0E8;
+  --mint: #7DDBA3;
+  --lavender: #B8A9C9;
+  --blush: #FFE5EC;
+  --text-muted: #6B6560;
+
+  /* ── Typography Scale (clamp) ── */
+  --type-h1: clamp(2.375rem, 4.643vw + 1.446rem, 5.625rem);
+  --type-h2: clamp(1.778rem, 2.483vw + 1.281rem, 3.516rem);
+  --type-h3: clamp(1.333rem, 1.862vw + 0.961rem, 2.637rem);
+  --type-h4: clamp(1.125rem, 0.893vw + 0.946rem, 1.75rem);
+  --type-body: clamp(1rem, 0.357vw + 0.929rem, 1.25rem);
+  --type-small: clamp(0.875rem, 0.179vw + 0.839rem, 1rem);
+  --type-btn: clamp(0.938rem, 0.268vw + 0.884rem, 1.125rem);
+  --type-handwritten: clamp(1.25rem, 1.071vw + 1.036rem, 2rem);
 }
 
+/* ── Tailwind v4 Theme Tokens ── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Colors */
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --color-coral: var(--coral);
+  --color-coral-hover: var(--coral-hover);
+  --color-sunshine: var(--sunshine);
+  --color-sunshine-hover: var(--sunshine-hover);
+  --color-sky: var(--sky);
+  --color-sky-hover: var(--sky-hover);
+  --color-mint: var(--mint);
+  --color-lavender: var(--lavender);
+  --color-blush: var(--blush);
+  --color-text-muted: var(--text-muted);
+
+  /* Fonts */
+  --font-nunito: var(--font-nunito-family);
+  --font-caveat: var(--font-caveat-family);
+  --font-inter: var(--font-inter-family);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Base Styles ── */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-inter-family), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--sunshine);
+  color: var(--ink);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--coral);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--coral-hover);
+}
+
+/* ── Swiper Overrides ── */
+.testimonials-swiper .swiper-pagination {
+  position: relative;
+  margin-top: 2rem;
+}
+
+.testimonials-swiper .swiper-pagination-bullet {
+  background-color: var(--lavender) !important;
+  opacity: 0.4;
+  width: 10px;
+  height: 10px;
+  transition: all 0.3s ease;
+}
+
+.testimonials-swiper .swiper-pagination-bullet-active {
+  background-color: var(--coral) !important;
+  opacity: 1;
+  width: 12px;
+  height: 12px;
 }
