@@ -98,7 +98,7 @@ export default function Hero() {
               {/* Shadow / glow behind book */}
               <div className="absolute inset-0 bg-coral/10 rounded-3xl blur-3xl scale-110" />
               <Image
-                src="/images/book-cover.png"
+                src="/janikovszki-eva-borito-szinezett.webp"
                 alt="Az érem két oldala — borítókép"
                 width={480}
                 height={640}
