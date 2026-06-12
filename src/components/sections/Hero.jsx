@@ -24,22 +24,6 @@ export default function Hero() {
         priority
         className="absolute lg:top-1/2 top-1/6 lg:-right-1/5 -right-1/2 -translate-y-1/2 lg:-translate-x-0 -translate-x-1/2 z-10 rotate-2 hover:rotate-0 transition-transform duration-500"
       />
-      {/* Decorative background elements */}
-      <div className="absolute top-10 left-8 opacity-40 hidden md:block">
-        <Star color="var(--sunshine)" size={48} />
-      </div>
-      <div className="absolute top-32 right-16 opacity-30 hidden md:block">
-        <Doodle color="var(--sky)" size={56} variant="spiral" />
-      </div>
-      <div className="absolute bottom-20 left-16 opacity-25 hidden lg:block">
-        <Doodle color="var(--coral)" size={64} variant="loop" />
-      </div>
-      <div className="absolute bottom-32 right-8 opacity-35 hidden md:block">
-        <Star color="var(--mint)" size={36} />
-      </div>
-      <div className="absolute top-1/2 left-1/3 opacity-20 hidden lg:block">
-        <Doodle color="var(--lavender)" size={40} variant="heart" />
-      </div>
 
       {/* Soft gradient blob */}
       <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(255,217,61,0.15)_0%,transparent_70%)] pointer-events-none" />
