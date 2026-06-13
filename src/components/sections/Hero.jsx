@@ -17,7 +17,7 @@ export default function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden bg-cream px-6 py-20 lg:px-8 lg:py-0"
     >
       <Image
-        src="/konyv-borito-mockup.png"
+        src="/konyv-borito-mockup-sotet.png"
         alt="Az érem két oldala — borítókép"
         width={1920}
         height={900}

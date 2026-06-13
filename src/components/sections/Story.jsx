@@ -31,7 +31,7 @@ export default function Story() {
 
       <div className="mx-auto max-w-6xl px-6 lg:px-8 pb-20 lg:pb-32 relative z-10 flex flex-col md:flex-row items-start gap-12 lg:gap-16">
         {/* Left side: Sticky Images */}
-        <div className="md:w-1/2 w-full sticky top-24 md:top-[50vh] md:-translate-y-1/2 z-20 flex items-center justify-center self-start">
+        <div className="md:w-1/2 w-full sticky top-24 md:top-[20vh] z-20 flex items-center justify-center self-start md:mt-12">
           <div className="w-full aspect-square max-w-md mx-auto relative">
             <AnimatePresence mode="wait">
               {activeIndex === 0 && (
