@@ -14,8 +14,8 @@ export default function Audience() {
       {/* Soft gradient accent */}
       <div className="absolute top-0 right-0 w-72 h-72 bg-[radial-gradient(circle,rgba(110,198,255,0.12)_0%,transparent_70%)] pointer-events-none" />
 
-      <div className="mx-auto max-w-4xl text-center">
-
+      <div className="mx-auto max-w-5xl text-center relative z-10">
+        <Image src="/spacer.webp" alt="Díszítő elem" width={140} height={20} className="mx-auto mb-8 object-contain" />
         <H2 className="mb-8">
           Kinek szól ez a <span className="text-coral">könyv</span>?
         </H2>

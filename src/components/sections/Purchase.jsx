@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "motion/react";
+import Image from "next/image";
 import H2 from "@/components/ui/typography/H2";
 import Paragraph from "@/components/ui/typography/Paragraph";
 import MainButton from "@/components/ui/buttons/MainButton";
@@ -18,7 +19,9 @@ export default function Purchase() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          priceId: process.env.NEXT_PUBLIC_STRIPE_EBOOK_PRICE_ID || "price_placeholder",
+          priceId:
+            process.env.NEXT_PUBLIC_STRIPE_EBOOK_PRICE_ID ||
+            "price_placeholder",
         }),
       });
       const data = await res.json();
@@ -41,18 +44,16 @@ export default function Purchase() {
       {/* Gradient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(255,255,255,0.15)_0%,transparent_60%)] pointer-events-none" />
 
-      {/* Floating decorations */}
-      <div className="absolute top-16 right-20 opacity-40 hidden md:block">
-        <Star color="var(--sunshine)" size={36} />
-      </div>
-      <div className="absolute bottom-16 left-20 opacity-30 hidden md:block">
-        <Star color="var(--cream)" size={28} />
-      </div>
-
       <div className="mx-auto max-w-3xl text-center relative z-10">
+        <Image
+          src="/spacer.webp"
+          alt="Díszítő elem"
+          width={140}
+          height={20}
+          className="mx-auto mb-8 object-contain"
+        />
         <H2 color="text-white" className="mb-6">
-          Megveszem az{" "}
-          <span className="text-sunshine">E-bookot</span>!
+          Megveszem az <span className="text-sunshine">E-bookot</span>
         </H2>
 
         <Paragraph color="text-white/90" className="mb-10 max-w-2xl mx-auto">
@@ -69,11 +70,9 @@ export default function Purchase() {
           className="bg-white/10 backdrop-blur-md rounded-3xl p-10 border border-white/20 max-w-md mx-auto mb-10"
         >
           <div className="flex items-center justify-center gap-2 mb-2">
-            <Star color="var(--sunshine)" size={20} animate={false} />
             <span className="font-inter text-white/70 text-sm uppercase tracking-wider">
               E-book
             </span>
-            <Star color="var(--sunshine)" size={20} animate={false} />
           </div>
 
           <h3 className="font-nunito font-extrabold text-5xl text-white mb-2">
@@ -106,7 +105,13 @@ export default function Purchase() {
             onClick={handlePurchase}
             color="bg-ink"
             hoverColor="hover:bg-ink/80"
-            iconBefore={loading ? <FaSpinner className="animate-spin" /> : <FaShoppingCart />}
+            iconBefore={
+              loading ? (
+                <FaSpinner className="animate-spin" />
+              ) : (
+                <FaShoppingCart />
+              )
+            }
             className="w-full justify-center text-white"
           >
             {loading ? "Átirányítás..." : "Megveszem az E-bookot!"}

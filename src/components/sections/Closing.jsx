@@ -7,7 +7,7 @@ import Paragraph from "@/components/ui/typography/Paragraph";
 import Handwritten from "@/components/ui/typography/Handwritten";
 import MainButton from "@/components/ui/buttons/MainButton";
 import SecondaryButton from "@/components/ui/buttons/SecondaryButton";
-import Squiggle from "@/components/decorations/Squiggle";
+import Image from "next/image";
 import Star from "@/components/decorations/Star";
 import Doodle from "@/components/decorations/Doodle";
 import { FaBookReader, FaCalendarAlt, FaCheckCircle } from "react-icons/fa";
@@ -42,22 +42,12 @@ export default function Closing() {
       id="zaras"
       className="relative bg-cream px-6 py-20 lg:px-8 lg:py-28 overflow-hidden"
     >
-      {/* Decorative elements */}
-      <div className="absolute top-8 left-12 opacity-30 hidden lg:block">
-        <Star color="var(--sunshine)" size={44} />
-      </div>
-      <div className="absolute top-20 right-20 opacity-20 hidden lg:block">
-        <Doodle color="var(--sky)" size={52} variant="spiral" />
-      </div>
-      <div className="absolute bottom-16 left-1/4 opacity-25 hidden lg:block">
-        <Doodle color="var(--coral)" size={40} variant="heart" />
-      </div>
-
       <div className="mx-auto max-w-4xl text-center relative z-10">
-        <Squiggle color="var(--coral)" width={120} className="mx-auto mb-10" />
+        <Image src="/spacer.webp" alt="Díszítő elem" width={140} height={20} className="mx-auto mb-8 object-contain" />
 
         <H2 className="mb-6">
-          <span className="text-coral">Merülj el</span> az ismerős, mindennapi, mai élethelyzetekben
+          <span className="text-coral">Merülj el</span> az ismerős, mindennapi,
+          mai élethelyzetekben
         </H2>
 
         <Paragraph className="max-w-2xl mx-auto mb-12" color="text-ink/80">
@@ -95,7 +85,10 @@ export default function Closing() {
               </p>
             </motion.div>
           ) : (
-            <form onSubmit={handlePreorder} className="flex flex-col sm:flex-row gap-3">
+            <form
+              onSubmit={handlePreorder}
+              className="flex flex-col sm:flex-row gap-3"
+            >
               <input
                 type="email"
                 value={email}
@@ -119,29 +112,13 @@ export default function Closing() {
             Várható megjelenés: 2026. november
           </p>
         </motion.div>
-
-        {/* Bottom motto */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-16"
-        >
-          <Handwritten
-            as="p"
-            className="block text-xl lg:text-2xl"
-            color="text-text-muted"
-          >
-            Ez Janikovszky világa... csak velünk együtt felnőtt!
-          </Handwritten>
-        </motion.div>
       </div>
 
       {/* Footer credits */}
       <div className="mt-20 text-center border-t border-ink/5 pt-8">
         <p className="font-inter text-text-muted/40 text-xs">
-          © {new Date().getFullYear()} Az érem két oldala. Minden jog fenntartva.
+          © {new Date().getFullYear()} Az érem két oldala. Minden jog
+          fenntartva.
         </p>
       </div>
     </section>

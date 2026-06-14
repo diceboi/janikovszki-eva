@@ -4,7 +4,6 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import H2 from "@/components/ui/typography/H2";
 import Paragraph from "@/components/ui/typography/Paragraph";
-import Squiggle from "@/components/decorations/Squiggle";
 
 export default function Hook() {
   return (
@@ -13,6 +12,13 @@ export default function Hook() {
       className="relative bg-cream px-6 py-20 lg:px-8 lg:py-28 overflow-clip"
     >
       <div className="mx-auto max-w-3xl text-center mb-20 lg:mb-32 py-28 lg:pt-0">
+        <Image
+          src="/spacer.webp"
+          alt="Díszítő elem"
+          width={140}
+          height={20}
+          className="mx-auto mb-8 object-contain"
+        />
         <H2 color="text-ink" className="mb-8">
           Észrevetted már <span className="text-coral">magadon</span>?
         </H2>
@@ -195,21 +201,12 @@ export default function Hook() {
               változások és a digitalizáció életünk mindennapi részévé váltak.
             </Paragraph>
 
-            <div className="bg-white rounded-3xl p-8 shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-sunshine/20">
-              <Paragraph
-                color="text-ink"
-                weight="font-medium"
-                className="text-center md:text-left"
-              >
-                Mégis van, ami ebben a felgyorsult, bizonytalanná váló
-                világunkban is örök és állandó marad: a mindennapos emberi
-                helyzeteink és az az emberi sajátosságunk, hogy szeretjük, ha az
-                érem mindkét oldalán a mi igazunk áll{" "}
-                <span className="text-2xl inline-block align-middle ml-1">
-                  ☺
-                </span>
-              </Paragraph>
-            </div>
+            <Paragraph className="mb-8" color="text-ink/80">
+              Mégis van, ami ebben a felgyorsult, bizonytalanná váló világunkban
+              is örök és állandó marad: a mindennapos emberi helyzeteink és az
+              az emberi sajátosságunk, hogy szeretjük, ha az érem mindkét
+              oldalán a mi igazunk áll
+            </Paragraph>
           </motion.div>
         </div>
       </div>

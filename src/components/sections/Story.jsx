@@ -2,6 +2,8 @@
 
 import { motion } from "motion/react";
 import Image from "next/image";
+import MainButton from "@/components/ui/buttons/MainButton";
+import { FaBookOpen } from "react-icons/fa";
 import H2 from "@/components/ui/typography/H2";
 import Paragraph from "@/components/ui/typography/Paragraph";
 
@@ -13,6 +15,7 @@ export default function Story() {
     >
       <div className="mx-auto max-w-6xl relative z-10">
         <div className="text-center mb-16 lg:mb-24">
+          <Image src="/spacer.webp" alt="Díszítő elem" width={140} height={20} className="mx-auto mb-8 object-contain" />
           <H2>
             Miről szól a <span className="text-coral">könyv</span>?
           </H2>
@@ -52,6 +55,11 @@ export default function Story() {
               dilemmákról, hogy miképp lehet melegen tartani a túrógombócot,
               hanem hogy lehet-e Chat GPT-t használni a matek leckéhez?
             </Paragraph>
+            <div className="mt-8">
+              <MainButton href="#beleolvasok" iconAfter={<FaBookOpen />}>
+                Beleolvasok a könyvbe!
+              </MainButton>
+            </div>
           </motion.div>
         </div>
       </div>

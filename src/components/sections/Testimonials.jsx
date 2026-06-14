@@ -5,6 +5,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { motion } from "motion/react";
+import Image from "next/image";
 import H2 from "@/components/ui/typography/H2";
 import Doodle from "@/components/decorations/Doodle";
 import { FaQuoteLeft } from "react-icons/fa";
@@ -21,7 +22,7 @@ const testimonials = [
     role: "Marketing menedzser",
   },
   {
-    text: "A gyerekkorom óta nem nevettem ennyit olvasás közben. Janikovszky szelleme él és virul!",
+    text: "A gyerekkorom óta nem nevettem ennyit olvasás közben. A kedvenc írőnőm szelleme él és virul!",
     author: "Eszter, 35",
     role: "Tanárnő",
   },
@@ -33,16 +34,9 @@ export default function Testimonials() {
       id="velemenyek"
       className="relative bg-lavender/15 px-6 py-20 lg:px-8 lg:py-28 overflow-hidden"
     >
-      {/* Decorative */}
-      <div className="absolute top-8 left-8 opacity-20 hidden lg:block">
-        <Doodle color="var(--lavender)" size={56} variant="heart" />
-      </div>
-      <div className="absolute bottom-12 right-12 opacity-20 hidden lg:block">
-        <Doodle color="var(--coral)" size={48} variant="spiral" />
-      </div>
-
       <div className="mx-auto max-w-5xl">
         <div className="text-center mb-14">
+          <Image src="/spacer.webp" alt="Díszítő elem" width={140} height={20} className="mx-auto mb-8 object-contain" />
           <H2 className="mb-4">
             Olvasói <span className="text-coral">ajánlások</span>
           </H2>
@@ -70,7 +64,10 @@ export default function Testimonials() {
               <SwiperSlide key={idx}>
                 <div className="bg-white rounded-3xl p-8 shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-lavender/10 h-full flex flex-col">
                   <FaQuoteLeft className="text-coral/30 text-2xl mb-4" />
-                  <p className="font-inter text-ink/80 leading-relaxed flex-1 mb-6" style={{ fontSize: "var(--type-small)" }}>
+                  <p
+                    className="font-inter text-ink/80 leading-relaxed flex-1 mb-6"
+                    style={{ fontSize: "var(--type-small)" }}
+                  >
                     {item.text}
                   </p>
                   <div className="border-t border-lavender/20 pt-4">

@@ -5,7 +5,6 @@ import { motion } from "motion/react";
 import H2 from "@/components/ui/typography/H2";
 import Paragraph from "@/components/ui/typography/Paragraph";
 import Handwritten from "@/components/ui/typography/Handwritten";
-import Squiggle from "@/components/decorations/Squiggle";
 import Doodle from "@/components/decorations/Doodle";
 
 export default function Author() {
@@ -21,7 +20,7 @@ export default function Author() {
 
       <div className="mx-auto max-w-5xl">
         <div className="text-center mb-12">
-          <Squiggle color="var(--mint)" width={100} className="mx-auto mb-8" />
+          <Image src="/spacer.webp" alt="Díszítő elem" width={140} height={20} className="mx-auto mb-8 object-contain" />
           <H2 className="mb-4">
             A <span className="text-coral">szerzőről</span>
           </H2>
@@ -59,25 +58,23 @@ export default function Author() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Handwritten
-              as="p"
-              className="mb-4 block"
-              color="text-coral"
-            >
+            <Handwritten as="p" className="mb-4 block" color="text-coral">
               Mézes-Lendvai Dorottya
             </Handwritten>
 
             <Paragraph className="mb-4" color="text-ink/80">
-              A könyv szerzője Mézes-Lendvai Dorottya, aki maga is „Janikovszky gyerekként"
-              nőtt fel Budapesten. Nem hiányozhatott a könyvespolcáról egyik Janikovszky kötet
-              sem és ezek voltak az első könyvek, amiket már egyedül is olvasni tudott.
+              A könyv szerzője Mézes-Lendvai Dorottya, aki maga is ezeken a
+              gyerekkönyveken nőtt fel Budapesten. Nem hiányozhatott a
+              könyvespolcáról egyik kötete sem és ezek voltak az első könyvek,
+              amiket már egyedül is olvasni tudott.
             </Paragraph>
 
             <Paragraph className="mb-0" color="text-ink/80">
-              Jelenleg egy tanácsadó cég szakmai vezetőjeként dolgozik, ahol a különböző
-              generációk együttműködésének fejlesztésével foglalkozik vállalati környezetben,
-              valamint business coachként gyakran találkozik olyan hasonló emberi helyzetekkel,
-              amiket a kötetben is megjelenít.
+              Jelenleg egy tanácsadó cég szakmai vezetőjeként dolgozik, ahol a
+              különböző generációk együttműködésének fejlesztésével foglalkozik
+              vállalati környezetben, valamint business coachként gyakran
+              találkozik olyan hasonló emberi helyzetekkel, amiket a kötetben is
+              megjelenít.
             </Paragraph>
           </motion.div>
         </div>

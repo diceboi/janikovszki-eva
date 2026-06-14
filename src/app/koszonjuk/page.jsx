@@ -1,73 +1,96 @@
-"use client";
+import Stripe from "stripe";
+import { FaFilePdf, FaBook } from "react-icons/fa";
 
-import { motion } from "motion/react";
-import H1 from "@/components/ui/typography/H1";
-import Paragraph from "@/components/ui/typography/Paragraph";
-import Handwritten from "@/components/ui/typography/Handwritten";
-import MainButton from "@/components/ui/buttons/MainButton";
-import Star from "@/components/decorations/Star";
-import Doodle from "@/components/decorations/Doodle";
-import { FaHome, FaBookOpen } from "react-icons/fa";
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-export default function KoszonjukPage() {
-  return (
-    <main className="min-h-screen bg-cream flex items-center justify-center px-6 py-20 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-16 left-12 opacity-30">
-        <Star color="var(--sunshine)" size={48} />
-      </div>
-      <div className="absolute bottom-20 right-16 opacity-25">
-        <Star color="var(--coral)" size={36} />
-      </div>
-      <div className="absolute top-1/3 right-8 opacity-20">
-        <Doodle color="var(--sky)" size={52} variant="heart" />
-      </div>
-      <div className="absolute bottom-1/4 left-8 opacity-20">
-        <Doodle color="var(--mint)" size={44} variant="spiral" />
-      </div>
+export default async function KoszonjukPage({ searchParams }) {
+  const resolvedSearchParams = await searchParams;
+  const session_id = resolvedSearchParams?.session_id;
 
-      {/* Gradient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(125,219,163,0.12)_0%,transparent_60%)] pointer-events-none" />
-
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
-        className="text-center max-w-xl relative z-10"
-      >
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.3, type: "spring", bounce: 0.5 }}
-          className="mb-8 text-7xl"
-        >
-          🎉
-        </motion.div>
-
-        <H1 className="mb-4" animate={false}>
-          <span className="text-coral">Köszönjük</span> a vásárlást!
-        </H1>
-
-        <Handwritten
-          as="p"
-          className="block mb-6"
-          animate={false}
-          color="text-text-muted"
-        >
-          Jó olvasást kívánunk!
-        </Handwritten>
-
-        <Paragraph className="mb-10" animate={false} color="text-ink/70">
-          A letöltési linket hamarosan megkapod e-mailben. Ha nem érkezik meg
-          néhány percen belül, kérjük ellenőrizd a spam mappát is.
-        </Paragraph>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <MainButton href="/" iconBefore={<FaHome />}>
-            Vissza a főoldalra
-          </MainButton>
+  if (!session_id) {
+    return (
+      <div className="min-h-[70vh] flex items-center justify-center bg-cream text-ink">
+        <div className="text-center p-8 max-w-xl mx-auto">
+          <h1 className="text-3xl font-bold mb-4 font-nunito">Hiba történt</h1>
+          <p className="text-lg text-ink/70 font-inter">
+            A keresett oldal nem található vagy hiányzik a vásárlási azonosító.
+          </p>
         </div>
-      </motion.div>
-    </main>
+      </div>
+    );
+  }
+
+  let session;
+  try {
+    session = await stripe.checkout.sessions.retrieve(session_id);
+  } catch (error) {
+    return (
+      <div className="min-h-[70vh] flex items-center justify-center bg-cream text-ink">
+        <div className="text-center p-8 max-w-xl mx-auto">
+          <h1 className="text-3xl font-bold mb-4 font-nunito">Hiba történt</h1>
+          <p className="text-lg text-ink/70 font-inter">
+            Nem található érvényes vásárlás.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (session.payment_status !== "paid") {
+    return (
+      <div className="min-h-[70vh] flex items-center justify-center bg-cream text-ink">
+        <div className="text-center p-8 max-w-xl mx-auto">
+          <h1 className="text-3xl font-bold mb-4 font-nunito">Sikertelen fizetés</h1>
+          <p className="text-lg text-ink/70 font-inter">
+            Nem található érvényes vásárlás vagy a fizetés még nem teljesült.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  const customerEmail = session.customer_details?.email;
+
+  return (
+    <div className="min-h-[70vh] flex flex-col items-center justify-center bg-cream text-ink pt-24 pb-16 px-4">
+      <div className="bg-white border border-ink/5 shadow-[0_8px_30px_rgba(0,0,0,0.08)] rounded-3xl p-10 max-w-2xl w-full text-center">
+        <h1 className="text-4xl font-bold mb-6 font-nunito text-coral">
+          Köszönjük a vásárlást!
+        </h1>
+
+        {customerEmail && (
+          <p className="font-inter text-ink/80 mb-8">
+            Sikeres tranzakció a következő e-mail címmel: <br />
+            <span className="font-bold text-ink text-lg">
+              {customerEmail}
+            </span>
+          </p>
+        )}
+
+        <div className="bg-sunshine/10 rounded-2xl p-8 border border-sunshine/20">
+          <p className="text-lg text-ink font-bold mb-6 font-nunito">
+            A digitális e-book fájlok (PDF és EPUB) letölthetők:
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={`/api/download?session_id=${session_id}&type=pdf`}
+              className="inline-flex items-center justify-center gap-2 bg-coral hover:bg-coral/90 text-white font-bold py-4 px-8 rounded-full transition-colors duration-300"
+            >
+              <FaFilePdf size={20} />
+              Letöltés (PDF)
+            </a>
+            
+            <a
+              href={`/api/download?session_id=${session_id}&type=epub`}
+              className="inline-flex items-center justify-center gap-2 bg-sky hover:bg-sky/90 text-white font-bold py-4 px-8 rounded-full transition-colors duration-300"
+            >
+              <FaBook size={20} />
+              Letöltés (EPUB)
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
