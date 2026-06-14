@@ -17,12 +17,12 @@ export default function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden bg-cream px-6 py-20 lg:px-8 lg:py-0"
     >
       <Image
-        src="/konyv-borito-mockup-sotet.png"
+        src="/konyv-borito-mockup-sotet.webp"
         alt="Az érem két oldala — borítókép"
-        width={1920}
-        height={900}
+        width={1440}
+        height={1080}
         priority
-        className="absolute lg:top-1/2 top-1/6 lg:-right-1/5 -right-1/2 -translate-y-1/2 lg:-translate-x-0 -translate-x-1/2 z-10 rotate-2 hover:rotate-0 transition-transform duration-500"
+        className="absolute lg:top-1/2 top-1/6 lg:-right-[10vw] -right-1/2 -translate-y-1/2 lg:-translate-x-0 -translate-x-1/2 z-10 rotate-2 hover:rotate-0 transition-transform duration-500"
       />
 
       {/* Soft gradient blob */}
