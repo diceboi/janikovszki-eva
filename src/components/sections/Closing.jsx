@@ -16,22 +16,29 @@ export default function Closing() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handlePreorder = async (e) => {
     e.preventDefault();
     if (!email) return;
     setSubmitting(true);
+    setErrorMsg("");
     try {
       const res = await fetch("/api/preorder", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
+      const data = await res.json();
+      
       if (res.ok) {
         setSubmitted(true);
+      } else {
+        setErrorMsg(data.error || "Hiba történt a feliratkozás során.");
       }
     } catch (err) {
       console.error("Preorder error:", err);
+      setErrorMsg("Hálózati hiba történt. Kérlek próbáld újra később.");
     } finally {
       setSubmitting(false);
     }
@@ -85,30 +92,38 @@ export default function Closing() {
               </p>
             </motion.div>
           ) : (
-            <form
-              onSubmit={handlePreorder}
-              className="flex flex-col sm:flex-row gap-3"
-            >
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                placeholder="Email címed"
-                className="flex-1 rounded-full border-2 border-ink/10 bg-cream px-6 py-3.5 font-inter text-ink placeholder:text-text-muted/50 focus:border-coral focus:outline-none focus:ring-4 focus:ring-coral/10 transition-all"
-              />
-              <MainButton
-                color="bg-coral"
-                hoverColor="hover:bg-coral-hover"
-                iconBefore={<FaBookReader />}
-                className="whitespace-nowrap"
+            <div className="flex flex-col gap-2">
+              <form
+                onSubmit={handlePreorder}
+                className="flex flex-col sm:flex-row gap-3"
               >
-                {submitting ? "Küldés..." : "Előrendelem!"}
-              </MainButton>
-            </form>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder="Email címed"
+                  className="flex-1 rounded-full border-2 border-ink/10 bg-cream px-6 py-3.5 font-inter text-ink placeholder:text-text-muted/50 focus:border-coral focus:outline-none focus:ring-4 focus:ring-coral/10 transition-all"
+                />
+                <MainButton
+                  color="bg-coral"
+                  hoverColor="hover:bg-coral-hover"
+                  iconBefore={<FaBookReader />}
+                  className="whitespace-nowrap"
+                  disabled={submitting}
+                >
+                  {submitting ? "Küldés..." : "Előrendelem!"}
+                </MainButton>
+              </form>
+              {errorMsg && (
+                <p className="text-red-500 font-inter text-sm font-semibold mt-1">
+                  {errorMsg}
+                </p>
+              )}
+            </div>
           )}
 
-          <p className="font-inter text-text-muted/60 text-xs mt-4">
+          <p className="font-inter text-text-muted/60 text-xs mt-6">
             Várható megjelenés: 2026. november
           </p>
         </motion.div>
