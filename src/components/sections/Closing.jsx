@@ -114,12 +114,37 @@ export default function Closing() {
         </motion.div>
       </div>
 
-      {/* Footer credits */}
-      <div className="mt-20 text-center border-t border-ink/5 pt-8">
-        <p className="font-inter text-text-muted/40 text-xs">
-          © {new Date().getFullYear()} Az érem két oldala. Minden jog
-          fenntartva.
-        </p>
+      {/* Footer */}
+      <div className="mt-20 border-t border-ink/5 pt-12 pb-8">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-8 text-center md:text-left">
+          
+          {/* Impresszum */}
+          <div>
+            <h4 className="font-nunito font-bold text-ink mb-4">Impresszum</h4>
+            <ul className="font-inter text-ink/60 text-sm space-y-2">
+              <li><strong>Cégnév:</strong> Coreheed Consulting Kft.</li>
+              <li><strong>Székhely:</strong> 2040 Budaörs, Ibolya utca 60.</li>
+              <li><strong>Adószám:</strong> 32531813-1-13</li>
+              <li><strong>Cégjegyzékszám:</strong> 13-09-233401</li>
+              <li><strong>E-mail:</strong> <a href="mailto:info@coreheed.hu" className="hover:text-coral transition-colors">info@coreheed.hu</a></li>
+            </ul>
+          </div>
+
+          {/* Jogi nyilatkozatok */}
+          <div>
+            <h4 className="font-nunito font-bold text-ink mb-4">Jogi információk</h4>
+            <ul className="font-inter text-ink/60 text-sm space-y-2 flex flex-col">
+              <li><a href="/aszf" className="hover:text-coral transition-colors underline underline-offset-2">Általános Szerződési Feltételek (ÁSZF)</a></li>
+              <li><a href="/adatkezelesi-tajekoztato" className="hover:text-coral transition-colors underline underline-offset-2">Adatkezelési Tájékoztató</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-12 text-center">
+          <p className="font-inter text-ink/40 text-xs">
+            © {new Date().getFullYear()} Az érem két oldala. Minden jog fenntartva.
+          </p>
+        </div>
       </div>
     </section>
   );
