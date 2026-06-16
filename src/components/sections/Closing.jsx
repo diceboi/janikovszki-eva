@@ -155,9 +155,12 @@ export default function Closing() {
           </div>
         </div>
 
-        <div className="mt-12 text-center">
+        <div className="mt-12 flex flex-col gap-1 text-center">
           <p className="font-inter text-ink/40 text-xs">
             © {new Date().getFullYear()} Az érem két oldala. Minden jog fenntartva.
+          </p>
+          <p className="font-inter text-ink/40 text-xs">
+            Webdesign/rajzok: Szász Szabolcs
           </p>
         </div>
       </div>

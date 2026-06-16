@@ -205,7 +205,7 @@ export default function Hook() {
               Mégis van, ami ebben a felgyorsult, bizonytalanná váló világunkban
               is örök és állandó marad: a mindennapos emberi helyzeteink és az
               az emberi sajátosságunk, hogy szeretjük, ha az érem mindkét
-              oldalán a mi igazunk áll
+              oldalán a mi igazunk áll.
             </Paragraph>
           </motion.div>
         </div>

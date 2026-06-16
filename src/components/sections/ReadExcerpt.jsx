@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import H2 from "@/components/ui/typography/H2";
+import H3 from "@/components/ui/typography/H3";
 import Paragraph from "@/components/ui/typography/Paragraph";
 import MainButton from "@/components/ui/buttons/MainButton";
 import SecondaryButton from "@/components/ui/buttons/SecondaryButton";
@@ -9,6 +10,88 @@ import Image from "next/image";
 import { FaBookOpen, FaArrowRight, FaShoppingCart } from "react-icons/fa";
 
 import HTMLFlipBook from "react-pageflip";
+
+const tocData = [
+  { title: "Foreword", page: "iv", isSub: false },
+  { title: "Copyright", page: "iv", isSub: true },
+  { title: "ELŐSZÓ", page: "1", isSub: false },
+  { title: "Kinek a gyereke?", page: "3", isSub: false },
+  { title: "AZ ÉREM EGYIK OLDALA", page: "3", isSub: true },
+  { title: "Kinek a gyereke?", page: "7", isSub: false },
+  { title: "AZ ÉREM MÁSIK OLDALA", page: "7", isSub: true },
+  { title: "Anya, lánya, unokája", page: "11", isSub: false },
+  { title: "AZ ÉREM EGYIK OLDALA", page: "11", isSub: true },
+  { title: "Anya, lánya, unokája", page: "14", isSub: false },
+  { title: "AZ ÉREM MÁSIK OLDALA", page: "14", isSub: true },
+  { title: "Autós dilemma", page: "17", isSub: false },
+  { title: "AZ ÉREM EGYIK OLDALA", page: "17", isSub: true },
+  { title: "Autós dilemma", page: "20", isSub: false },
+  { title: "AZ ÉREM MÁSIK OLDALA", page: "20", isSub: true },
+  { title: "Matek házi és egy kis AI", page: "24", isSub: false },
+  { title: "AZ ÉREM EGYIK OLDALA", page: "24", isSub: true },
+  { title: "Matek házi és egy kis AI", page: "28", isSub: false },
+  { title: "AZ ÉREM MÁSIK OLDALA", page: "28", isSub: true },
+  { title: "Símánia", page: "31", isSub: false },
+  { title: "AZ ÉREM EGYIK OLDALA", page: "31", isSub: true },
+  { title: "Símánia", page: "35", isSub: false },
+  { title: "AZ ÉREM MÁSIK OLDALA", page: "35", isSub: true },
+  { title: "Z generáció az iroda küszöbén", page: "38", isSub: false },
+  { title: "AZ ÉREM EGYIK OLDALA", page: "38", isSub: true },
+  { title: "Z generáció az iroda küszöbén", page: "42", isSub: false },
+  { title: "AZ ÉREM MÁSIK OLDALA", page: "42", isSub: true },
+  { title: "Esküvő mindenáron?", page: "46", isSub: false },
+  { title: "AZ ÉREM EGYIK OLDALA", page: "46", isSub: true },
+  { title: "Esküvő mindenáron?", page: "49", isSub: false },
+  { title: "AZ ÉREM MÁSIK OLDALA", page: "49", isSub: true },
+  { title: "A nevelés csődje", page: "53", isSub: false },
+  { title: "AZ ÉREM EGYIK OLDALA", page: "53", isSub: true },
+  { title: "A nevelés csődje", page: "57", isSub: false },
+  { title: "AZ ÉREM MÁSIK OLDALA", page: "57", isSub: true },
+  { title: "Digi detox és burnout", page: "61", isSub: false },
+  { title: "AZ ÉREM EGYIK OLDALA", page: "61", isSub: true },
+  { title: "Digi detox és burnout", page: "65", isSub: false },
+  { title: "AZ ÉREM MÁSIK OLDALA", page: "65", isSub: true },
+  { title: "Botoxxal szebb az élet?", page: "68", isSub: false },
+  { title: "AZ ÉREM EGYIK OLDALA", page: "68", isSub: true },
+  { title: "Botoxxal szebb az élet?", page: "71", isSub: false },
+  { title: "AZ ÉREM MÁSIK OLDALA", page: "71", isSub: true },
+  { title: "Shopping őrület", page: "74", isSub: false },
+  { title: "AZ ÉREM EGYIK OLDALA", page: "74", isSub: true },
+  { title: "Shopping őrület", page: "77", isSub: false },
+  { title: "AZ ÉREM MÁSIK OLDALA", page: "77", isSub: true },
+  { title: "Randi kérdés és GenZ szleng", page: "80", isSub: false },
+  { title: "AZ ÉREM EGYIK OLDALA", page: "80", isSub: true },
+  { title: "Randi kérdés és GenZ szleng", page: "84", isSub: false },
+  { title: "AZ ÉREM MÁSIK OLDALA", page: "84", isSub: true },
+  { title: "Üres fészek", page: "87", isSub: false },
+  { title: "AZ ÉREM EGYIK OLDALA", page: "87", isSub: true },
+  { title: "Üres fészek", page: "90", isSub: false },
+  { title: "AZ ÉREM MÁSIK OLDALA", page: "90", isSub: true },
+  { title: "Hova tovább?", page: "93", isSub: false },
+  { title: "AZ ÉREM EGYIK OLDALA", page: "93", isSub: true },
+  { title: "Hova tovább?", page: "97", isSub: false },
+  { title: "AZ ÉREM MÁSIK OLDALA", page: "97", isSub: true },
+  { title: "Legyünk zöldek, de ennyire?", page: "100", isSub: false },
+  { title: "AZ ÉREM EGYIK OLDALA", page: "100", isSub: true },
+  { title: "Legyünk zöldek, de ennyire?", page: "103", isSub: false },
+  { title: "AZ ÉREM MÁSIK OLDALA", page: "103", isSub: true },
+  { title: "A CoreHeedről", page: "106", isSub: false },
+  { title: "About the Author", page: "108", isSub: false },
+];
+
+const tocPages = [
+  tocData.slice(0, 17),
+  tocData.slice(17, 34),
+  tocData.slice(34, 51),
+  tocData.slice(51),
+];
+
+const TocItem = ({ title, page, isSub }) => (
+  <div className={`flex justify-between items-baseline mb-[3px] ${isSub ? 'pl-4 text-[10px] md:text-[11px] text-ink/70 italic' : 'text-[11px] md:text-xs font-semibold text-ink/80'}`}>
+    <span className="truncate pr-2">{title}</span>
+    <span className="shrink-0">{page}</span>
+  </div>
+);
 
 export default function ReadExcerpt() {
   return (
@@ -72,6 +155,9 @@ export default function ReadExcerpt() {
                 <div className="font-nunito font-bold text-coral text-xl mb-4 md:mb-6 border-b border-coral/20 pb-2">
                   Az egyik oldal...
                 </div>
+                <p className="text-sm md:text-xs lg:text-sm font-bold font-inter text-ink/80 leading-relaxed mb-4 text-justify italic">
+                  Anya, lánya, unokája
+                </p>
                 <p className="text-sm md:text-xs lg:text-sm font-inter text-ink/80 leading-relaxed mb-4 text-justify italic">
                   Az érem egyik oldalán a kissé frusztrált anyuka egy hétköznap reggel, mikor a 14 éves lánya egy szál müzli szelettel a kezében akar elindulni az iskolába.
                 </p>
@@ -207,7 +293,29 @@ export default function ReadExcerpt() {
               </div>
             </div>
 
-            {/* Page 6 - Back cover */}
+            {/* TOC Pages */}
+            {tocPages.map((items, pageIndex) => {
+              const isLeft = pageIndex % 2 === 0;
+              return (
+                <div key={`toc-page-${pageIndex}`} className={`page bg-cream overflow-hidden ${isLeft ? 'border-l border-ink/10 shadow-[inset_5px_0_10px_rgba(0,0,0,0.05)]' : 'border-r border-ink/10 shadow-[inset_-5px_0_10px_rgba(0,0,0,0.05)]'}`}>
+                  <div className="flex flex-col h-full w-full p-6 md:p-8">
+                    {pageIndex === 0 && (
+                      <div className="font-nunito font-bold text-coral text-xl mb-4 md:mb-6 border-b border-coral/20 pb-2 text-center">
+                        Tartalom
+                      </div>
+                    )}
+                    <div className={`${pageIndex > 0 ? 'pt-2' : ''} flex-1`}>
+                      {items.map((item, idx) => (
+                        <TocItem key={`toc-item-${pageIndex}-${idx}`} {...item} />
+                      ))}
+                    </div>
+                    <div className="mt-auto pt-2 text-center text-ink/40 text-sm">{13 + pageIndex}</div>
+                  </div>
+                </div>
+              );
+            })}
+
+            {/* Back cover */}
             <div className="page bg-coral border-l border-coral/80 overflow-hidden shadow-[inset_5px_0_10px_rgba(0,0,0,0.1)]">
               <div className="flex flex-col justify-center items-center h-full w-full p-8 text-white">
                 <h3 className="font-nunito font-bold text-3xl mb-4 text-center">
@@ -230,7 +338,7 @@ export default function ReadExcerpt() {
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <MainButton iconBefore={<FaShoppingCart />} href="#vasarlas">
-            megveszem az e-book-ot
+            Megveszem az E-bookot!
           </MainButton>
         </motion.div>
       </div>
