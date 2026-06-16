@@ -20,7 +20,7 @@ const features = [
       />
     ),
     title: "Nosztalgia, ami hazavisz",
-    desc: "Felidézi a gyerekkori olvasási élményedet — de modernbe öltöztetve.",
+    desc: "Felidézi a gyerekkori olvasási élményedet - de a felnőtt életed szituációira épít.",
     accent: "",
   },
   {
@@ -75,7 +75,13 @@ export default function WhySpecial() {
     >
       <div className="mx-auto max-w-5xl">
         <div className="text-center mb-14">
-          <Image src="/spacer.webp" alt="Díszítő elem" width={140} height={20} className="mx-auto mb-8 object-contain" />
+          <Image
+            src="/spacer-v2.webp"
+            alt="Díszítő elem"
+            width={140}
+            height={20}
+            className="mx-auto mb-8 object-contain"
+          />
           <H2 className="mb-6">
             Miért <span className="text-coral">különleges</span>?
           </H2>

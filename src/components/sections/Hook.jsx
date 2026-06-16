@@ -13,7 +13,7 @@ export default function Hook() {
     >
       <div className="mx-auto max-w-3xl text-center mb-20 lg:mb-32 py-28 lg:pt-0">
         <Image
-          src="/spacer.webp"
+          src="/spacer-v2.webp"
           alt="Díszítő elem"
           width={140}
           height={20}
@@ -108,7 +108,7 @@ export default function Hook() {
         {/* Section 1: Kép balra, szöveg jobbra */}
         <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-16">
           <motion.div
-            className="md:w-1/2 w-full aspect-square max-w-md mx-auto relative"
+            className="md:w-1/2 w-full h-56 md:h-72 max-w-sm mx-auto relative"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -116,7 +116,7 @@ export default function Hook() {
           >
             {/* Bemondó - bal oldalról bukkan elő */}
             <motion.div
-              className="absolute top-1/4 -left-8 md:-left-8 w-32 h-32 md:w-64 md:h-64 z-0"
+              className="absolute top-0 left-0 md:top-2 md:left-2 w-50 h-50 md:w-64 md:h-64 z-10"
               initial={{ x: 80, rotate: 0, opacity: 0 }}
               whileInView={{ x: 0, rotate: -12, opacity: 1 }}
               viewport={{ once: true }}
@@ -137,7 +137,7 @@ export default function Hook() {
 
             {/* KISZ zászló - jobb alsó sarok */}
             <motion.div
-              className="absolute -bottom-4 -right-4 md:-bottom-8 md:-right-0 w-36 h-36 md:w-48 md:h-48 z-0 rotate-45"
+              className="absolute bottom-0 right-0 md:bottom-2 md:right-2 w-36 h-36 md:w-48 md:h-48 z-0"
               initial={{ scale: 0.5, opacity: 0, rotate: 10 }}
               whileInView={{ scale: 1, opacity: 1, rotate: 0 }}
               viewport={{ once: true }}

@@ -36,7 +36,7 @@ export default function Testimonials() {
     >
       <div className="mx-auto max-w-5xl">
         <div className="text-center mb-14">
-          <Image src="/spacer.webp" alt="Díszítő elem" width={140} height={20} className="mx-auto mb-8 object-contain" />
+          <Image src="/spacer-v2.webp" alt="Díszítő elem" width={140} height={20} className="mx-auto mb-8 object-contain" />
           <H2 className="mb-4">
             Olvasói <span className="text-coral">ajánlások</span>
           </H2>

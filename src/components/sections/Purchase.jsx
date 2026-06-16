@@ -46,7 +46,7 @@ export default function Purchase() {
 
       <div className="mx-auto max-w-3xl text-center relative z-10">
         <Image
-          src="/spacer.webp"
+          src="/spacer-v2.webp"
           alt="Díszítő elem"
           width={140}
           height={20}

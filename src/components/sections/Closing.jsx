@@ -50,7 +50,7 @@ export default function Closing() {
       className="relative bg-cream px-6 py-20 lg:px-8 lg:py-28 overflow-hidden"
     >
       <div className="mx-auto max-w-4xl text-center relative z-10">
-        <Image src="/spacer.webp" alt="Díszítő elem" width={140} height={20} className="mx-auto mb-8 object-contain" />
+        <Image src="/spacer-v2.webp" alt="Díszítő elem" width={140} height={20} className="mx-auto mb-8 object-contain" />
 
         <H2 className="mb-6">
           <span className="text-coral">Merülj el</span> az ismerős, mindennapi,

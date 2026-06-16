@@ -34,7 +34,7 @@ export default function Hero() {
           {/* Text content */}
           <div className="order-2 lg:order-1 text-center lg:text-left">
             <H1 className="mb-6">
-              Az érem <span className="text-coral">két</span> oldala
+              Az érem <span className="text-coral">KÉT</span> oldala
             </H1>
 
             <Handwritten as="p" className="mb-6 block" color="text-text-muted">

@@ -20,7 +20,7 @@ export default function Author() {
 
       <div className="mx-auto max-w-5xl">
         <div className="text-center mb-12">
-          <Image src="/spacer.webp" alt="Díszítő elem" width={140} height={20} className="mx-auto mb-8 object-contain" />
+          <Image src="/spacer-v2.webp" alt="Díszítő elem" width={140} height={20} className="mx-auto mb-8 object-contain" />
           <H2 className="mb-4">
             A <span className="text-coral">szerzőről</span>
           </H2>
@@ -63,18 +63,17 @@ export default function Author() {
             </Handwritten>
 
             <Paragraph className="mb-4" color="text-ink/80">
-              A könyv szerzője Mézes-Lendvai Dorottya, aki maga is ezeken a
-              gyerekkönyveken nőtt fel Budapesten. Nem hiányozhatott a
-              könyvespolcáról egyik kötete sem és ezek voltak az első könyvek,
-              amiket már egyedül is olvasni tudott.
+              A könyv szerzője Mézes-Lendvai Dorottya, aki maga is ezeken a jól
+              ismert gyerekkönyveken nőtt fel Budapesten. Jelenleg Budaörsön él,
+              két Z generációs gyermek édesanyja, így a könyvben megjelenő
+              helyzetek és dilemmák sokszor a saját mindennapjaikból is ismerősek.
             </Paragraph>
 
             <Paragraph className="mb-0" color="text-ink/80">
-              Jelenleg egy tanácsadó cég szakmai vezetőjeként dolgozik, ahol a
-              különböző generációk együttműködésének fejlesztésével foglalkozik
-              vállalati környezetben, valamint business coachként gyakran
-              találkozik olyan hasonló emberi helyzetekkel, amiket a kötetben is
-              megjelenít.
+              Egy tanácsadó cég szakmai vezetőjeként dolgozik, ahol a különböző
+              generációk együttműködésének fejlesztésével foglalkozik vállalati
+              környezetben, valamint business coachként gyakran találkozik olyan
+              hasonló emberi helyzetekkel, amiket a kötetben is megjelenít.
             </Paragraph>
           </motion.div>
         </div>

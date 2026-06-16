@@ -15,7 +15,7 @@ export default function Story() {
     >
       <div className="mx-auto max-w-6xl relative z-10">
         <div className="text-center mb-16 lg:mb-24">
-          <Image src="/spacer.webp" alt="Díszítő elem" width={140} height={20} className="mx-auto mb-8 object-contain" />
+          <Image src="/spacer-v2.webp" alt="Díszítő elem" width={140} height={20} className="mx-auto mb-8 object-contain" />
           <H2>
             Miről szól a <span className="text-coral">könyv</span>?
           </H2>

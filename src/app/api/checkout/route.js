@@ -14,6 +14,13 @@ export async function POST(req) {
           quantity: 1,
         },
       ],
+      billing_address_collection: "required",
+      tax_id_collection: {
+        enabled: true,
+      },
+      invoice_creation: {
+        enabled: true,
+      },
       success_url: `${process.env.NEXT_PUBLIC_APP_URL}/koszonjuk?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/#vasarlas`,
     });
