@@ -18,8 +18,12 @@ export async function POST(req) {
       tax_id_collection: {
         enabled: true,
       },
+      customer_creation: "always",
       invoice_creation: {
         enabled: true,
+        invoice_data: {
+          footer: `Köszönjük a vásárlást! A könyveket bármikor letöltheted a weboldalunkon az e-mail címed megadásával: ${process.env.NEXT_PUBLIC_APP_URL}/letoltes`
+        }
       },
       success_url: `${process.env.NEXT_PUBLIC_APP_URL}/koszonjuk?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/#vasarlas`,
