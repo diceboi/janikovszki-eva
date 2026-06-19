@@ -575,7 +575,7 @@ export default function ReadExcerpt() {
             minHeight={450}
             maxHeight={700}
             maxShadowOpacity={0.5}
-            showCover={true}
+            showCover={false}
             mobileScrollSupport={true}
             usePortrait={true}
             className="flip-book shadow-2xl"
