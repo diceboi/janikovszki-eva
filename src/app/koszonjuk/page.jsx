@@ -1,5 +1,6 @@
 import Stripe from "stripe";
-import { FaFilePdf, FaBook } from "react-icons/fa";
+import { FaFilePdf, FaBook, FaArrowLeft } from "react-icons/fa";
+import Link from "next/link";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -11,6 +12,10 @@ export default async function KoszonjukPage({ searchParams }) {
     return (
       <div className="min-h-[70vh] flex items-center justify-center bg-cream text-ink">
         <div className="text-center p-8 max-w-xl mx-auto">
+          <Link href="/" className="inline-flex items-center gap-2 text-ink/60 hover:text-coral transition-colors mb-6 font-medium text-sm hover:underline">
+            <FaArrowLeft size={12} />
+            Vissza a főoldalra
+          </Link>
           <h1 className="text-3xl font-bold mb-4 font-nunito">Hiba történt</h1>
           <p className="text-lg text-ink/70 font-inter">
             A keresett oldal nem található vagy hiányzik a vásárlási azonosító.
@@ -27,6 +32,10 @@ export default async function KoszonjukPage({ searchParams }) {
     return (
       <div className="min-h-[70vh] flex items-center justify-center bg-cream text-ink">
         <div className="text-center p-8 max-w-xl mx-auto">
+          <Link href="/" className="inline-flex items-center gap-2 text-ink/60 hover:text-coral transition-colors mb-6 font-medium text-sm hover:underline">
+            <FaArrowLeft size={12} />
+            Vissza a főoldalra
+          </Link>
           <h1 className="text-3xl font-bold mb-4 font-nunito">Hiba történt</h1>
           <p className="text-lg text-ink/70 font-inter">
             Nem található érvényes vásárlás.
@@ -40,6 +49,10 @@ export default async function KoszonjukPage({ searchParams }) {
     return (
       <div className="min-h-[70vh] flex items-center justify-center bg-cream text-ink">
         <div className="text-center p-8 max-w-xl mx-auto">
+          <Link href="/" className="inline-flex items-center gap-2 text-ink/60 hover:text-coral transition-colors mb-6 font-medium text-sm hover:underline">
+            <FaArrowLeft size={12} />
+            Vissza a főoldalra
+          </Link>
           <h1 className="text-3xl font-bold mb-4 font-nunito">Sikertelen fizetés</h1>
           <p className="text-lg text-ink/70 font-inter">
             Nem található érvényes vásárlás vagy a fizetés még nem teljesült.
@@ -54,6 +67,12 @@ export default async function KoszonjukPage({ searchParams }) {
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center bg-cream text-ink pt-24 pb-16 px-4">
       <div className="bg-white border border-ink/5 shadow-[0_8px_30px_rgba(0,0,0,0.08)] rounded-3xl p-10 max-w-2xl w-full text-center">
+        <div className="flex justify-center w-full mb-6">
+          <Link href="/" className="inline-flex items-center gap-2 text-ink/60 hover:text-coral transition-colors font-medium text-sm hover:underline">
+            <FaArrowLeft size={12} />
+            Vissza a főoldalra
+          </Link>
+        </div>
         <h1 className="text-4xl font-bold mb-6 font-nunito text-coral">
           Köszönjük a vásárlást!
         </h1>

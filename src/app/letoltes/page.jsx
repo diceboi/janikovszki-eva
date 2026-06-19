@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { FaFilePdf, FaBook, FaEnvelope } from "react-icons/fa";
+import { FaFilePdf, FaBook, FaEnvelope, FaArrowLeft } from "react-icons/fa";
+import Link from "next/link";
 
 export default function LetoltesPage() {
   const [email, setEmail] = useState("");
@@ -38,6 +39,12 @@ export default function LetoltesPage() {
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center bg-cream text-ink pt-24 pb-16 px-4">
       <div className="bg-white border border-ink/5 shadow-[0_8px_30px_rgba(0,0,0,0.08)] rounded-3xl p-10 max-w-2xl w-full text-center">
+        <div className="flex justify-center w-full mb-6">
+          <Link href="/" className="inline-flex items-center gap-2 text-ink/60 hover:text-coral transition-colors font-medium text-sm hover:underline">
+            <FaArrowLeft size={12} />
+            Vissza a főoldalra
+          </Link>
+        </div>
         <h1 className="text-4xl font-bold mb-6 font-nunito text-coral">
           E-könyvek letöltése
         </h1>
