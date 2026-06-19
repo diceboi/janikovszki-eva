@@ -7,21 +7,49 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
   const session_id = searchParams.get("session_id");
-  const type = searchParams.get("type"); // "pdf" or "epub"
+  const email = searchParams.get("email");
+  const type = searchParams.get("type");
 
-  if (!session_id || !type) {
-    return new Response("Hiányzó paraméterek (session_id vagy type)", { status: 400 });
+  if ((!session_id && !email) || !type) {
+    return new Response("Hiányzó paraméterek (session_id/email vagy type)", { status: 400 });
   }
 
   // 1. Stripe visszaellenőrzés
-  let session;
-  try {
-    session = await stripe.checkout.sessions.retrieve(session_id);
-  } catch (error) {
-    return new Response("Érvénytelen azonosító", { status: 400 });
+  let isPaid = false;
+
+  if (session_id) {
+    try {
+      const session = await stripe.checkout.sessions.retrieve(session_id);
+      if (session.payment_status === "paid") {
+        isPaid = true;
+      }
+    } catch (error) {
+      return new Response("Érvénytelen azonosító", { status: 400 });
+    }
+  } else if (email) {
+    try {
+      const customers = await stripe.customers.list({
+        email: email.toLowerCase().trim(),
+        limit: 10,
+      });
+      
+      for (const customer of customers.data) {
+        const sessions = await stripe.checkout.sessions.list({
+          customer: customer.id,
+          limit: 10,
+        });
+        
+        if (sessions.data.some(s => s.payment_status === "paid")) {
+          isPaid = true;
+          break;
+        }
+      }
+    } catch (error) {
+      return new Response("Hiba a hitelesítés során", { status: 500 });
+    }
   }
 
-  if (session.payment_status !== "paid") {
+  if (!isPaid) {
     return new Response("Nincs kifizetve", { status: 403 });
   }
 

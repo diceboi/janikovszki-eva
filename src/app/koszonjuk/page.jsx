@@ -72,7 +72,7 @@ export default async function KoszonjukPage({ searchParams }) {
             A digitális e-book fájlok (PDF és EPUB) letölthetők:
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <a
               href={`/api/download?session_id=${session_id}&type=pdf`}
               className="inline-flex items-center justify-center gap-2 bg-coral hover:bg-coral/90 text-white font-bold py-4 px-8 rounded-full transition-colors duration-300"
@@ -89,6 +89,10 @@ export default async function KoszonjukPage({ searchParams }) {
               Letöltés (EPUB)
             </a>
           </div>
+
+          <p className="text-sm text-ink/70 mt-6 border-t border-ink/10 pt-6">
+            <strong>Tipp:</strong> Ha később szeretnéd letölteni a könyveket, bármikor megteheted a <a href="/letoltes" className="text-coral hover:underline font-bold">Letöltés</a> oldalon az e-mail címed megadásával. Ezt az oldalt is javasoljuk elmenteni!
+          </p>
         </div>
       </div>
     </div>
